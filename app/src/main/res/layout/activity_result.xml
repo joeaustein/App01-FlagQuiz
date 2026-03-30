@@ -7,4 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".controller.ResultActivity">
 
+    <TextView
+        android:id="@+id/tvFinal"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnRestart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnRestart"
+        android:text="Recomeçar"
+        app:layout_constraintTop_toBottomOf="@id/tvFinal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
