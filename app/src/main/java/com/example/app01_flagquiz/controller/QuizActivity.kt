@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.app01_flagquiz.R
 import com.example.app01_flagquiz.model.Flag
 import com.example.app01_flagquiz.util.Constants
+import java.text.Normalizer
+import java.util.Locale
 
 class QuizActivity : AppCompatActivity() {
 
@@ -31,7 +33,7 @@ class QuizActivity : AppCompatActivity() {
             insets
         }
 
-        name = intent.getStringExtra("USER_NAME") ?: ""
+        name = intent.getStringExtra(Constants.USER_NAME) ?: ""
 
         questions = Constants.getFlags().shuffled().take(5)
 
@@ -47,8 +49,8 @@ class QuizActivity : AppCompatActivity() {
                 showQuestion()
             } else {
                 val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra("SCORE", score)
-                intent.putExtra("USER_NAME", name)
+                intent.putExtra(Constants.SCORE, score)
+                intent.putExtra(Constants.USER_NAME, name)
                 startActivity(intent)
                 finish()
             }
@@ -69,14 +71,13 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun checkAnswer() {
-        val answer = findViewById<EditText>(R.id.etAnswer)
-            .text.toString().trim().lowercase()
-
-        val correct = questions[index].name.lowercase()
+        val etAnswer = findViewById<EditText>(R.id.etAnswer)
+        val answer = etAnswer.text.toString().trim()
+        val correct = questions[index].name
 
         val tvResult = findViewById<TextView>(R.id.tvResult)
 
-        if (answer == correct) {
+        if (normalizeString(answer).equals(normalizeString(correct), ignoreCase = true)) {
             tvResult.text = "Correto!"
             tvResult.setTextColor(Color.GREEN)
             score += 20
@@ -87,5 +88,10 @@ class QuizActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnSubmit).visibility = View.GONE
         findViewById<Button>(R.id.btnNext).visibility = View.VISIBLE
+    }
+
+    private fun normalizeString(input: String): String {
+        val normalized = Normalizer.normalize(input, Normalizer.Form.NFD)
+        return normalized.replace(Regex("[\\p{InCombiningDiacriticalMarks}]"), "")
     }
 }

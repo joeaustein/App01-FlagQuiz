@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app01_flagquiz.R
+import com.example.app01_flagquiz.util.Constants
 
 class ResultActivity : AppCompatActivity() {
 
@@ -23,14 +24,15 @@ class ResultActivity : AppCompatActivity() {
             insets
         }
 
-        val score = intent.getIntExtra("SCORE", 0)
-        val name = intent.getStringExtra("USER_NAME")
+        val score = intent.getIntExtra(Constants.SCORE, 0)
+        val name = intent.getStringExtra(Constants.USER_NAME) ?: "Jogador"
 
-        findViewById<TextView>(R.id.tvFinal).text =
-            "$name, sua pontuação foi: $score"
+        findViewById<TextView>(R.id.tvFinal).text = "$name, sua pontuação final foi: $score"
 
         findViewById<Button>(R.id.btnRestart).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }
     }
