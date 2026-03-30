@@ -4,23 +4,26 @@ import com.example.app01_flagquiz.R
 import com.example.app01_flagquiz.model.Flag
 
 object Constants {
+    const val USER_NAME = "user_name"
+    const val SCORE = "score"
 
     fun getFlags(): ArrayList<Flag> {
         return arrayListOf(
-            Flag("argentina", R.drawable.argentina),
-            Flag("armenia", R.drawable.armenia),
-            Flag("australia", R.drawable.australia),
-            Flag("austria", R.drawable.austria),
-            Flag("bahamas", R.drawable.bahamas),
-            Flag("bolivia", R.drawable.bolivia),
-            Flag("brasil", R.drawable.brasil),
-            Flag("bulgaria", R.drawable.bulgaria),
-            Flag("canada", R.drawable.canada),
-            Flag("chile", R.drawable.chile),
-            Flag("china", R.drawable.china),
-            Flag("colombia", R.drawable.colombia),
-            Flag("costarica", R.drawable.costaRica),
-            Flag("cuba", R.drawable.cuba)
+            Flag("Argentina", R.drawable.argentina),
+            Flag("Armênia", R.drawable.armenia),
+            Flag("Austrália", R.drawable.australia),
+            Flag("Áustria", R.drawable.austria),
+            Flag("Bahamas", R.drawable.bahamas),
+            Flag("Bolívia", R.drawable.bolivia),
+            Flag("Brasil", R.drawable.brasil),
+            Flag("Bulgária", R.drawable.bulgaria),
+            Flag("Canadá", R.drawable.canada),
+            Flag("Chile", R.drawable.chile),
+            Flag("China", R.drawable.china),
+            Flag("Colômbia", R.drawable.colombia),
+            Flag("Costa Rica", R.drawable.costa_rica),
+            Flag("Cuba", R.drawable.cuba),
+            Flag("México", R.drawable.mexico)
         )
     }
 }

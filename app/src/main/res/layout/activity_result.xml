@@ -2,28 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/mainResult"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".controller.ResultActivity">
 
     <TextView
-        android:id="@+id/tvFinal"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnRestart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Resultado Final"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvFinal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvFinal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Jogador, sua pontuação final foi: 0"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRestart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <Button
         android:id="@+id/btnRestart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="Recomeçar"
-        app:layout_constraintTop_toBottomOf="@id/tvFinal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFinal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

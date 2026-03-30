@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Flag(
     val name: String,
-    val imageResId: Int
+    val image: Int
 ) : Parcelable
